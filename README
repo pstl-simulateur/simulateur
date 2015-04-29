@@ -1,0 +1,16 @@
+Code Source Arduino => Fichier.hex
+
+Solution 1 : Générer le fichier.hex via IDE Arduino, en cliquant sur le bouton vérifier. Cela génère un fichier.hex dans un répertoire temporaire "/tmp/build6637646175377343381.tmp/Blink.cpp.hex". 
+
+Solution 2 :
+Exécuter le programme shell hex pour passer du code Arduino en hexadécimal:
+     ./hex fichier.ino
+Ce programme va nous créer le fichier.hex assossié au fichier.ino
+
+Fichier .hex => Fichier.asm
+Commande terminale pour passer d'un fichier.hex en un fichier.asm :
+     source : http://forum.arduino.cc/index.php?topic=74418.5;wap2
+
+	avr-objdump -j .sec1 -d -m avr5 Fichier.hex > Fichier.asm
+
+nb: Nous avons fait nos différents test sur le fichier Blink.ino.
