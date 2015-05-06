@@ -34,7 +34,26 @@ public class Memoire {
 	//Tableau des entrées-sorties
 	private static int [] inOut = new int[64];
 	
+	//Tableau qui représente la RAM
+	private static int [] ram = new int[6];
 	
+	public static int[] getRam() {
+		return ram;
+	}
+
+	public static void setRam(int[] ram) {
+		Memoire.ram = ram;
+	}
+
+	//Indice X
+	private static int indexX=0;
+	
+	//Indice Y
+	private static int indexY=2;
+
+	//Indice Z
+	private static int indexZ=4;
+
 	// A delete
 	//private static ArrayList<String> adresses = new ArrayList<String>(); //C'est un tableau qui contient l'adreese d'une instruction
 
@@ -55,6 +74,16 @@ public class Memoire {
 		}
 	}
 	
+	//Initialiser la ram
+	public static void initialiseRam(){
+		ram[0] = registres[26];
+		ram[1] = registres[27];
+		ram[2] = registres[28];
+		ram[3] = registres[29];
+		ram[4] = registres[30];
+		ram[5] = registres[31];
+	}
+	
 	//Initialiser l'octet a 0; partout au début
 	public static void initialiseOctet(){
 		for(int i = 0 ; i< octets.length; i++){
@@ -67,9 +96,14 @@ public class Memoire {
 		return registres[indice];
 	}
 
-		//metrre une valeur d'un régistre dans une 
+		//metrre une valeur dans un registre
 		public static  void put(int indice, int valeur){
 			registres[indice] = valeur;
+		}
+		
+		//metrre une valeur dans la ram
+		public static  void putRam(int indice, int valeur){
+			ram[indice] = valeur;
 		}
 		
 		public static void addOctet(int taille) { // Cette fonction est appelé lorsque qu'on a une instruction
@@ -151,6 +185,30 @@ public class Memoire {
 			Memoire.inOut[indice] = value;
 		}
 
+		public static int getIndexX() {
+			return indexX;
+		}
+
+		public static void setIndexX(int indexX) {
+			Memoire.indexX = indexX;
+		}
+
+		public static int getIndexY() {
+			return indexY;
+		}
+
+		public static void setIndexY(int indexY) {
+			Memoire.indexY = indexY;
+		}
+
+		public static int getIndexZ() {
+			return indexZ;
+		}
+
+		public static void setIndexZ(int indexZ) {
+			Memoire.indexZ = indexZ;
+		}
+
 		public static void initEtat(){
 			for(int i = 0; i < etat.length; i++)
 				etat[i] = 0;
@@ -163,6 +221,10 @@ public class Memoire {
 		
 		public static void afficherEtat(){
 			System.out.println(etat[0]+" "+etat[1]+" "+etat[2]+" "+etat[3]+" "+etat[4]+" "+etat[5]+" "+ etat[6]+" "+etat[7]);
+		}
+		
+		public static void afficherRam(){
+			System.out.println(ram[0]+" "+ram[1]+" "+ram[2]+" "+ram[3]+" "+ram[4]+" "+ram[5]);
 		}
 		
 		public static void affichePile(){

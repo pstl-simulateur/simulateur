@@ -42,6 +42,7 @@ import Transfers.MOVW;
 import Transfers.OUT;
 import Transfers.POP;
 import Transfers.PUSH;
+import Transfers.ST;
 
 public class Build {
 	
@@ -51,6 +52,7 @@ public class Build {
 		Memoire.initialiseOctet();
 		Memoire.setIndexOctet(0);
 		Memoire.initInOut();
+		Memoire.initialiseRam();
 
 		try{
 			InputStream ips=new FileInputStream("test.asm"); 
@@ -258,6 +260,10 @@ public class Build {
 				if(tab1[2].equals("call")){
 					Memoire.addOctet(4);
 					Memoire.getInst().add(new CALL(tab3[0]));
+				}
+				if(tab1[2].equals("st")){
+					Memoire.addOctet(2);
+					Memoire.getInst().add(new ST(tab3[0].trim(),tab3[1].trim()));
 				}
 	
 				

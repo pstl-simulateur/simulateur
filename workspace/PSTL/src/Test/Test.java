@@ -34,8 +34,14 @@ public class Test {
 
 		
 		//Memoire.afficheOctets();
-		System.out.println("--------FINISHED!!!--------\n");
+		System.out.println("\nTableau du registre d'état - Status Register");
 		Memoire.afficherEtat();
+		
+		System.out.println("\nRepresentation de la ram");
+		Memoire.afficherRam();
+		
+		System.out.println("\n--------FINISHED!!!--------\n");
+
 		
 
 	}
